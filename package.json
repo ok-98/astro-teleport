@@ -1,12 +1,15 @@
 {
   "name": "astro-teleport",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight Astro component for rendering content in a different part of the DOM using a Web Component.",
   "type": "module",
   "main": "index.ts",
   "module": "index.ts",
   "exports": {
     ".": "./index.ts"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "src",
@@ -21,7 +24,9 @@
     "portal",
     "portal-astro",
     "teleport",
-    "teleport-astro"
+    "teleport-astro",
+    "ui",
+    "renderer"
   ],
   "repository": {
     "type": "git",
@@ -38,9 +43,11 @@
   "scripts": {
     "build": "astro build",
     "dev": "astro dev",
-    "test": "echo 'No tests specified'"
+    "test": "echo 'No tests specified'",
+    "cs": "changeset"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.12",
     "astro": "^5.2.6"
   },
   "peerDependencies": {
