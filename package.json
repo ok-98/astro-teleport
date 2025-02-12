@@ -27,7 +27,9 @@
     "url": "https://github.com/ok-98/astro-portal/issues"
   },
   "homepage": "https://github.com/ok-98/astro-portal#readme",
-  "author": "Your Name your.email@example.com",
+  "author": {
+    "name": "Kacper Olszanski"
+  },
   "license": "MIT",
   "scripts": {
     "build": "astro build",
