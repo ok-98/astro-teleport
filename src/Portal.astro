@@ -1,0 +1,81 @@
+---
+interface Props {
+  "data-target"?: string;
+  "data-open"?: boolean;
+}
+
+export type PortalProps = Props;
+
+const { "data-target": target, "data-open": open } = Astro.props as Props;
+---
+
+<script>
+  class Portal extends HTMLElement {
+    portal: HTMLElement;
+    static observedAttributes = ["data-target", "data-open", "open", "target"];
+
+    get target() {
+      const target = this.dataset.target
+        ? document.querySelector<HTMLElement>(this.dataset.target)
+        : undefined;
+      return target ?? document.body;
+    }
+
+    get open() {
+      return this.dataset.open === "true" || this.dataset.open === "";
+    }
+
+    constructor() {
+      super();
+      this.attachShadow({ mode: "open" });
+      this.portal = document.createElement("div");
+      this.portal.append(
+        ...Array.from(this.childNodes).map((node) => node.cloneNode(true))
+      );
+      this.shadowRoot?.appendChild(this.portal);
+    }
+
+    connectedCallback() {
+      this.showOrHide();
+    }
+
+    showOrHide(open: boolean = this.open, target: HTMLElement = this.target) {
+      if (open) {
+        target?.appendChild(this.portal);
+      } else {
+        target?.removeChild(this.portal);
+      }
+    }
+
+    disconnectedCallback() {
+      this.showOrHide(false);
+    }
+
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+      switch (name) {
+        case "data-target":
+          const oldTarget = document.querySelector<HTMLElement>(oldValue);
+          const newTarget = document.querySelector<HTMLElement>(newValue);
+          if (oldTarget) {
+            this.showOrHide(false, oldTarget!);
+          }
+          if (newTarget) {
+            this.showOrHide(this.open, newTarget!);
+          }
+          break;
+        case "data-open":
+          this.showOrHide();
+          break;
+      }
+    }
+  }
+
+  customElements.define("astro-portal", Portal);
+</script>
+<astro-portal data-target={target} data-open={open}><slot /></astro-portal>
+
+<style>
+  astro-portal {
+    display: none;
+  }
+</style>

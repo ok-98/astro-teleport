@@ -1,7 +1,10 @@
 {
   "name": "astro-portal",
-  "version": "0.0.1",
+  "version": "1.0.0",
+  "description": "A lightweight Astro component for rendering content in a different part of the DOM using a Web Component.",
   "type": "module",
+  "main": "index.ts",
+  "module": "index.ts",
   "exports": {
     ".": "./index.ts"
   },
@@ -10,9 +13,27 @@
     "index.ts"
   ],
   "keywords": [
-    "astro-component"
+    "astro-component",
+    "astro-portal",
+    "astro",
+    "portal",
+    "portal-astro"
   ],
-  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ok-98/astro-portal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ok-98/astro-portal/issues"
+  },
+  "homepage": "https://github.com/ok-98/astro-portal#readme",
+  "author": "Your Name your.email@example.com",
+  "license": "MIT",
+  "scripts": {
+    "build": "astro build",
+    "dev": "astro dev",
+    "test": "echo 'No tests specified'"
+  },
   "devDependencies": {
     "astro": "^5.2.6"
   },

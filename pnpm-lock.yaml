@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      only-utils:
+        specifier: ^1.0.0
+        version: 1.0.0(better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)))(boolchain@0.5.1)(only-sort@1.0.0(only-types@1.0.1(http-code-util@0.2.3)))(only-types@1.0.1(http-code-util@0.2.3))
     devDependencies:
       astro:
         specifier: ^5.2.6
@@ -528,9 +532,23 @@ packages:
   base-64@1.0.0:
     resolution: {integrity: sha512-kwDPIFCGx0NZHog36dj+tHiwP4QMzsZ3AgMViUBKI0+V5n4U0ufTCUMhnQ04diaRI8EX/QcPfql7zlhZ7j4zgg==}
 
+  better-optional@1.2.1:
+    resolution: {integrity: sha512-+TCdq1cv0J8Mr3hCKJSEVWnxyRs/gN7HToo4IRsBKKMN8v4KbQ03abhyIWiEoIx6TvKjG4rObiDdyCUYQX/d/w==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      only-types: '>=1.0.1'
+
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
+
+  boolchain@0.5.1:
+    resolution: {integrity: sha512-nTnp+K8sNl3jLyuj8CnEM7dZCYMaTjHwr++XI2mQ/Pz1InuyEJEfyYuvHa3P1S2Bsipt5y2tqt2e9yIawjqOoQ==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      better-optional: '>=1.2.1'
+      only-types: '>=1.0.1'
+      only-utils: '>=0.6.1'
 
   boxen@8.0.1:
     resolution: {integrity: sha512-F3PH5k5juxom4xktynS7MoFY+NUWH5LC4CnH11YB8NPew+HLpmBLCybSAEyb2F+4pRXhuhWqFesoQd6DAyc2hw==}
@@ -787,6 +805,10 @@ packages:
   http-cache-semantics@4.1.1:
     resolution: {integrity: sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==}
 
+  http-code-util@0.2.3:
+    resolution: {integrity: sha512-Wl+eLAA3vl/4xwuQ61Juond4RFDmX7WLqsb3IiuwPXvoewmhmRbAev2GGrzHERaAwfV6TLg4IJWSIe7FLa1vMQ==}
+    engines: {node: '>=18'}
+
   import-meta-resolve@4.1.0:
     resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
 
@@ -1041,6 +1063,27 @@ packages:
 
   oniguruma-to-es@2.3.0:
     resolution: {integrity: sha512-bwALDxriqfKGfUufKGGepCzu9x7nJQuoRoAFp4AnwehhC2crqrDIAP/uN2qdlsAvSMpeRC3+Yzhqc7hLmle5+g==}
+
+  only-sort@1.0.0:
+    resolution: {integrity: sha512-Fr18B5RAJjHNbdHxtzAi5C7Nt3zEgx377KfxAp3PEhxM5QMkhxkDzO7g5qb3VG7ZfVh6p0/r+WuW5YMexQP8ow==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      only-types: '>=1.0.1'
+
+  only-types@1.0.1:
+    resolution: {integrity: sha512-DS7uQ+jt+H8V5wlqmbd5ndgfZuQhXQTI9+7x1yleHh4cZBD5QG11wZx4U1atGarjqV+YysabbnzrmnNiQB1SAQ==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      http-code-util: '>=0.2.3'
+
+  only-utils@1.0.0:
+    resolution: {integrity: sha512-XXCNTzVm3RhxO5PxrFnEnRfiey5PZkQHqthjvkcnJUoeDgiZuAuZpc5d1yUORniLxL8QytAZKb38BsVahcGGRQ==}
+    engines: {node: '>=20'}
+    peerDependencies:
+      better-optional: '>=1.2.1'
+      boolchain: '>=0.5.1'
+      only-sort: '>=1.0.0'
+      only-types: '>=1.0.1'
 
   p-limit@2.3.0:
     resolution: {integrity: sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w==}
@@ -1972,7 +2015,17 @@ snapshots:
 
   base-64@1.0.0: {}
 
+  better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)):
+    dependencies:
+      only-types: 1.0.1(http-code-util@0.2.3)
+
   binary-extensions@2.3.0: {}
+
+  boolchain@0.5.1(better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)))(only-types@1.0.1(http-code-util@0.2.3))(only-utils@1.0.0):
+    dependencies:
+      better-optional: 1.2.1(only-types@1.0.1(http-code-util@0.2.3))
+      only-types: 1.0.1(http-code-util@0.2.3)
+      only-utils: 1.0.0(better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)))(boolchain@0.5.1)(only-sort@1.0.0(only-types@1.0.1(http-code-util@0.2.3)))(only-types@1.0.1(http-code-util@0.2.3))
 
   boxen@8.0.1:
     dependencies:
@@ -2286,6 +2339,8 @@ snapshots:
   html-void-elements@3.0.0: {}
 
   http-cache-semantics@4.1.1: {}
+
+  http-code-util@0.2.3: {}
 
   import-meta-resolve@4.1.0: {}
 
@@ -2709,6 +2764,21 @@ snapshots:
       emoji-regex-xs: 1.0.0
       regex: 5.1.1
       regex-recursion: 5.1.1
+
+  only-sort@1.0.0(only-types@1.0.1(http-code-util@0.2.3)):
+    dependencies:
+      only-types: 1.0.1(http-code-util@0.2.3)
+
+  only-types@1.0.1(http-code-util@0.2.3):
+    dependencies:
+      http-code-util: 0.2.3
+
+  only-utils@1.0.0(better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)))(boolchain@0.5.1)(only-sort@1.0.0(only-types@1.0.1(http-code-util@0.2.3)))(only-types@1.0.1(http-code-util@0.2.3)):
+    dependencies:
+      better-optional: 1.2.1(only-types@1.0.1(http-code-util@0.2.3))
+      boolchain: 0.5.1(better-optional@1.2.1(only-types@1.0.1(http-code-util@0.2.3)))(only-types@1.0.1(http-code-util@0.2.3))(only-utils@1.0.0)
+      only-sort: 1.0.0(only-types@1.0.1(http-code-util@0.2.3))
+      only-types: 1.0.1(http-code-util@0.2.3)
 
   p-limit@2.3.0:
     dependencies:

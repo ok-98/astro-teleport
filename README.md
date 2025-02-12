@@ -1,35 +1,57 @@
-# Astro Starter Kit: Component Package
+# Astro Portal Component
 
-This is a template for an Astro component library. Use this template for writing components to use in multiple projects or publish to NPM.
+A lightweight Astro component for rendering content in a different part of the DOM using a Web Component.
+
+## Installation
 
 ```sh
-npm create astro@latest -- --template component
+npm install astro-portal
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/non-html-pages)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/non-html-pages)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/component/devcontainer.json)
+or with Yarn:
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── index.ts
-├── src
-│   └── MyComponent.astro
-├── tsconfig.json
-├── package.json
+```sh
+yarn add astro-portal
 ```
 
-The `index.ts` file is the "entry point" for your package. Export your components in `index.ts` to make them importable from your package.
+or with pnpm:
 
-## 🧞 Commands
+```sh
+pnpm add astro-portal
+```
 
-All commands are run from the root of the project, from a terminal:
+## Usage
 
-| Command       | Action                                                                                                                                                                                                                           |
-| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm link`    | Registers this package locally. Run `npm link my-component-library` in an Astro project to install your components                                                                                                               |
-| `npm publish` | [Publishes](https://docs.npmjs.com/creating-and-publishing-unscoped-public-packages#publishing-unscoped-public-packages) this package to NPM. Requires you to be [logged in](https://docs.npmjs.com/cli/v8/commands/npm-adduser) |
+### Basic Example
+
+```astro
+---
+import Portal from "astro-portal";
+---
+
+<Portal data-target="#modal" data-open={true}>
+  <div>
+    <h2>This is inside the portal!</h2>
+  </div>
+</Portal>
+```
+
+## Props
+
+| Prop         | Type    | Description                                            |
+|-------------|--------|--------------------------------------------------------|
+| `data-target` | `string` | A CSS selector for the target container. Defaults to `body`. |
+| `data-open`  | `boolean` | Controls whether the portal content is shown.         |
+
+## How It Works
+
+- The `Portal` component moves its children to the specified `data-target` element.
+- If `data-target` is not provided, it defaults to `document.body`.
+- When `data-open` is `true`, the portal content is mounted inside the target.
+- When `data-open` is `false`, the content is removed from the target.
+
+
+## License
+
+MIT
+
