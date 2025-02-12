@@ -5,19 +5,19 @@ A lightweight Astro component for rendering content in a different part of the D
 ## Installation
 
 ```sh
-npm install astro-portal
+npm install astro-teleport
 ```
 
 or with Yarn:
 
 ```sh
-yarn add astro-portal
+yarn add astro-teleport
 ```
 
 or with pnpm:
 
 ```sh
-pnpm add astro-portal
+pnpm add astro-teleport
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ pnpm add astro-portal
 
 ```astro
 ---
-import Portal from "astro-portal";
+import Portal from "astro-teleport";
 ---
 
 <Portal data-target="#modal" data-open={true}>

@@ -4,13 +4,13 @@ interface Props {
   "data-open"?: boolean;
 }
 
-export type PortalProps = Props;
+export type TeleportProps = Props;
 
 const { "data-target": target, "data-open": open } = Astro.props as Props;
 ---
 
 <script>
-  class Portal extends HTMLElement {
+  class Teleport extends HTMLElement {
     portal: HTMLElement;
     static observedAttributes = ["data-target", "data-open", "open", "target"];
 
@@ -27,12 +27,8 @@ const { "data-target": target, "data-open": open } = Astro.props as Props;
 
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
       this.portal = document.createElement("div");
-      this.portal.append(
-        ...Array.from(this.childNodes).map((node) => node.cloneNode(true))
-      );
-      this.shadowRoot?.appendChild(this.portal);
+      this.portal.append(...this.childNodes);
     }
 
     connectedCallback() {
@@ -53,7 +49,7 @@ const { "data-target": target, "data-open": open } = Astro.props as Props;
 
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
       switch (name) {
-        case "data-target":
+        case "data-target": {
           const oldTarget = document.querySelector<HTMLElement>(oldValue);
           const newTarget = document.querySelector<HTMLElement>(newValue);
           if (oldTarget) {
@@ -63,6 +59,7 @@ const { "data-target": target, "data-open": open } = Astro.props as Props;
             this.showOrHide(this.open, newTarget!);
           }
           break;
+        }
         case "data-open":
           this.showOrHide();
           break;
@@ -70,12 +67,12 @@ const { "data-target": target, "data-open": open } = Astro.props as Props;
     }
   }
 
-  customElements.define("astro-portal", Portal);
+  customElements.define("astro-teleport", Teleport);
 </script>
-<astro-portal data-target={target} data-open={open}><slot /></astro-portal>
+<astro-teleport data-target={target} data-open={open}><slot /></astro-teleport>
 
 <style>
-  astro-portal {
+  astro-teleport {
     display: none;
   }
 </style>
