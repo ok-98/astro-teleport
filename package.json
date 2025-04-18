@@ -1,6 +1,6 @@
 {
   "name": "astro-teleport",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A lightweight Astro component for rendering content in a different part of the DOM using a Web Component.",
   "type": "module",
   "main": "index.ts",
@@ -48,7 +48,8 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
-    "astro": "^5.2.6"
+    "astro": "^5.7.3",
+    "only-types": "^1.0.1"
   },
   "peerDependencies": {
     "astro": "^4.0.0 || ^5.0.0"

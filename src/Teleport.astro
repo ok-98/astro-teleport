@@ -23,8 +23,8 @@ const {
     get target() {
       const target = this.dataset.target
         ? document.querySelector<HTMLElement>(this.dataset.target)
-        : undefined;
-      return target ?? document.body;
+        : document.body;
+      return target;
     }
 
     get open() {
@@ -41,7 +41,13 @@ const {
       this.showOrHide();
     }
 
-    showOrHide(open: boolean = this.open, target: HTMLElement = this.target) {
+    showOrHide(
+      open: boolean = this.open,
+      target: HTMLElement | null = this.target
+    ) {
+      if (target === null) {
+        return;
+      }
       if (open) {
         target?.appendChild(this.portal);
       } else {
