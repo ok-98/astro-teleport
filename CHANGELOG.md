@@ -1,5 +1,11 @@
 # astro-teleport
 
+## 1.0.4
+
+### Patch Changes
+
+- addded try catch for remove child
+
 ## 1.0.3
 
 ### Patch Changes

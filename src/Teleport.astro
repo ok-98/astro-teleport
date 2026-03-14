@@ -43,7 +43,7 @@ const {
 
     showOrHide(
       open: boolean = this.open,
-      target: HTMLElement | null = this.target
+      target: HTMLElement | null = this.target,
     ) {
       if (target === null) {
         return;
@@ -51,7 +51,11 @@ const {
       if (open) {
         target?.appendChild(this.portal);
       } else {
-        target?.removeChild(this.portal);
+        try {
+          target?.removeChild(this.portal);
+        } catch (e) {
+          // do nothing
+        }
       }
     }
 
