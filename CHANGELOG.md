@@ -1,5 +1,11 @@
 # astro-teleport
 
+## 2.0.0
+
+### Major Changes
+
+- update to astro 6
+
 ## 1.0.4
 
 ### Patch Changes
